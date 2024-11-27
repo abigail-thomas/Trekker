@@ -1,2 +1,4 @@
-body {
+.carousel-item img {
+    max-width: auto;
+    height: auto;
 }
