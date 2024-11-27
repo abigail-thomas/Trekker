@@ -1,4 +1,17 @@
-.carousel-item img {
-    max-width: auto;
-    height: auto;
+
+/* Change the outline color of the input field to green when focused */
+.form-control:focus {
+    border-color: green; /* Change the border color to green */
+    box-shadow: none; /* Optional: adds a green shadow effect */
+}
+
+.carousel-caption {
+    padding: 20px;
+    border-radius: 10px;
+    text-shadow:
+        -1px -1px 0 #000, /* Top-left shadow */
+         1px -1px 0 #000, /* Top-right shadow */
+        -1px  1px 0 #000, /* Bottom-left shadow */
+         1px  1px 0 #000; /* Bottom-right shadow */
+    color: white; /* Ensure the text color contrasts with the outline */
 }
