@@ -2,23 +2,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Shippori+Antique+B1&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+
     <title>Final Project</title>
     <!-- my api key : ZdjnF2yJw2ekpgSkbIi1GOGC3cK2LFxASSHxdWXB for NASA-->
-    <!-- google geocoding api: AIzaSyCandeVGmVHVrQS03jzYu5y2h0UpA95KoQ-->
-    <!-- geocode maps api: AIzaSyCandeVGmVHVrQS03jzYu5y2h0UpA95KoQ-->
+    <!-- google geocoding api: AIzaSyCandeVGmVHVrQS03jzYu5y2h0UpA95KoQ  places api: AIzaSyDp_BWGVtBDdliDAM-_YUe2HOX1lYHlpmo   AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc-->
+    <!-- geocode maps api: 674602f427fbe194124983rcya9edbe-->
+
 </head>
 <body>
+
     <!-- navbar -->
     <nav class="navbar fixed-top navbar-expand-md navbar-dark p-0">
         <div class="container-fluid">
             <a class="navbar-brand">
-                <span>SUGAR</span>
+                <span>HOME</span>
             </a>
             <!-- toggle button for mobile nav -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +43,13 @@
         </div>
     </nav>
 
+   
+    
+    <div class="jumbotron">
+        <div class="container-fluid p-0">
+            <img src="imgs/forest.jpg" style="width:1980px"alt="">
+        </div>
+    </div>
 
 
 
@@ -49,15 +57,13 @@
 
 
 
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc=places"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
-        <script>
-        const tooltips = document.querySelectorAll('.tt')
-        tooltips.forEach(t => {
-            new bootstrap.Tooltip(t)
-        })
-        </script>
-        <script type="text/javascript" src="functions.js"></script>
+
+    <script type="text/javascript" src="functions.js"></script>
     
 </body>
 </html>
