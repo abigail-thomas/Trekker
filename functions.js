@@ -115,7 +115,7 @@ async function getParks(lat, lng, location, parksContainer1) {
         let bypass = await response.json();
         // console.log(data);
         let data = JSON.parse(bypass.contents);
-        // console.log(data);
+        console.log(data);
 
         
         // console.log(data.displayName.text);
@@ -219,7 +219,7 @@ async function showParks(location, data, parksContainer1) {
 
                 // Create a new card element
             let card = document.createElement('div');
-            card.classList.add('card', 'm-2');
+            card.classList.add('card');
             card.style.width = '100%';  // Optional: Set width of card
 
             // Card body
@@ -227,7 +227,7 @@ async function showParks(location, data, parksContainer1) {
             cardBody.classList.add('card-body');
 
             // Park name (Place Name)
-            let parkName = document.createElement('h5');
+            let parkName = document.createElement('h2');
             parkName.classList.add('card-title');
             parkName.textContent = places[i].name;
             cardBody.appendChild(parkName);
@@ -252,11 +252,20 @@ async function showParks(location, data, parksContainer1) {
                 let data = await response.json();
                 // console.log(data);
                 let img = document.createElement('img');
+                img.classList.add('image');
                 img.src = data.contents;
                 
 
+                // console.log(img.src);
+                cardBody.style.backgroundImage = `url(${img.src})`;
+                // console.log(cardBody);
+                cardBody.style.backgroundSize = 'cover';
+                cardBody.style.height = '300px';
+                
+
                 // Append the image to the DOM
-                cardBody.appendChild(img);
+                //cardBody.appendChild(img);
+                
 
 
                 // cardBody.appendChild(parkLocation);
@@ -276,11 +285,11 @@ async function showParks(location, data, parksContainer1) {
                 // details.classList.add('details');
                 // details.textContent = 'Address: ' + result.formatted_address;
                 let maps = document.createElement('a');
-                maps.classList.add('addy');
+                maps.classList.add('addy', 'pt-3');
                 maps.href = result.url;
                 maps.textContent = 'Address: ' + result.formatted_address;
 
-                console.log(maps);
+                // console.log(maps);
 
                 //<p><a href="chess.com">chess</a></p>
 
