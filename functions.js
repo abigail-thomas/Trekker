@@ -176,7 +176,7 @@ async function showParks(location, data, parksContainer1) {
     for (let i = 0; i < data.results.length; i++) {
         // console.log();
         if (data.results[i].photos && data.results[i].name) {
-            console.log(data.results[i]);
+            // console.log(data.results[i]);
             places.push(data.results[i]);
 
 
@@ -231,6 +231,11 @@ async function showParks(location, data, parksContainer1) {
             parkName.textContent = places[i].name;
             cardBody.appendChild(parkName);
 
+            
+
+
+
+
              // Park location (if available)
             if (places[i].photos) {
                 let parkLocation = document.createElement('p');
@@ -244,7 +249,7 @@ async function showParks(location, data, parksContainer1) {
                 // let data = JSON.parse(bypass.contents);
                 // let photo = await get.json();
                 let data = await response.json();
-                console.log(data);
+                // console.log(data);
                 let img = document.createElement('img');
                 img.src = data.contents;
                 
@@ -259,6 +264,38 @@ async function showParks(location, data, parksContainer1) {
                 let img = document.createElement('img');
                 img.src = 'imgs/noImage.png';
                 cardBody.appendChild(img);
+            }
+
+            // if rating availible
+            let ratings = document.createElement('p');
+            ratings.classList.add('stars');
+
+            // ★
+            let numStars = places[i].rating;
+            console.log(numStars);
+            numStars = Math.floor(numStars);
+            console.log(numStars);
+            
+            if (places[i].rating){
+                if (numStars <= 1){
+                    ratings.textContent = 'Rating: ★';
+                }
+                else if (numStars <= 2) {
+                    ratings.textContent ='Rating: ★★';
+                }
+                else if (numStars <= 3) {
+                    ratings.textContent ='Rating: ★★★';
+                }
+                else if (numStars <= 4) {
+                    ratings.textContent ='Rating: ★★★★';
+                }
+                else {
+                    ratings.textContent ='Rating: ★★★★★';
+                }
+                cardBody.appendChild(ratings);
+            }
+            else {
+                ratings.textContent = 'No rating available';
             }
             // let card = document.querySelector('#card');
             // let col = document.getElementsByClassName('.col');
