@@ -179,33 +179,6 @@ async function showParks(location, data, parksContainer1) {
             places.push(data.results);
 
 
-        }
-
-    }
-    console.log(places.length);
-    let nextPageToken = data.next_page_token;
-    // parksContainer1.innerHTML = '';
-    // places.forEach(place => {
-        
-
-        /*let card = document.createElement('div');
-        card.classList.add('card');
-        card.classList.add('m-2');
-       //  card.style.border = 'solid 20px';
-
-        let cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-
-        let parkName = document.createElement('h5');
-        parkName.textContent = place.name;
-        cardBody.appendChild(parkName);
-
-        parks.appendChild(cardBody);*/
-       // console.log(places.length);
-
-        
-        for (let i = 0; i < places.length; i++) {
-            console.log(places[i]);
             // for (let j = 0; j < i; j++)
             // console.log(places[i][j]);
 
@@ -213,12 +186,12 @@ async function showParks(location, data, parksContainer1) {
             parkName.textContent = place.name;
             cardBody.appendChild(parkName);*/
             let col = document.createElement('div');
-            col.classList.add('col-2', 'mb-4');
+            col.classList.add('col-4', 'mb-4');
 
                 // Create a new card element
             let card = document.createElement('div');
             card.classList.add('card', 'm-2');
-            card.style.width = '18rem';  // Optional: Set width of card
+            card.style.width = '100%';  // Optional: Set width of card
 
             // Card body
             let cardBody = document.createElement('div');
@@ -259,6 +232,10 @@ async function showParks(location, data, parksContainer1) {
                 img.src = 'imgs/noImage.png';
                 cardBody.appendChild(img);
             }
+            // let card = document.querySelector('#card');
+            // let col = document.getElementsByClassName('.col');
+            // console.log(col);
+            
 
             card.appendChild(cardBody);
             col.appendChild(card);
@@ -266,6 +243,36 @@ async function showParks(location, data, parksContainer1) {
 
 
 
+
+
+        }
+
+    }
+    console.log(places.length);
+    let nextPageToken = data.next_page_token;
+    // parksContainer1.innerHTML = '';
+    // places.forEach(place => {
+        
+
+        /*let card = document.createElement('div');
+        card.classList.add('card');
+        card.classList.add('m-2');
+       //  card.style.border = 'solid 20px';
+
+        let cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+
+        let parkName = document.createElement('h5');
+        parkName.textContent = place.name;
+        cardBody.appendChild(parkName);
+
+        parks.appendChild(cardBody);*/
+       // console.log(places.length);
+
+    console.log(places);
+
+        for (let i = 0; i < places.length; i++) {
+            
            
             // console.log(cardBody);
             
