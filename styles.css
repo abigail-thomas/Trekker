@@ -55,6 +55,12 @@
     color: #555;
 }
 
+.stars {
+    display: flex;
+    justify-content: center;
+    justify-self:  center;
+}
+
 #parks-container1 {
     padding: 0;
     margin: 0;
