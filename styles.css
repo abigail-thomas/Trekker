@@ -5,8 +5,8 @@
     box-shadow: none; /* Optional: adds a green shadow effect */
 }
 
-.carousel-caption {
-    padding: 20px;
+.carousel-caption, .outlined, .link, .card-title, .addy, .stars, .description {
+    padding: 10px;
     border-radius: 10px;
     text-shadow:
         -1px -1px 0 #000, /* Top-left shadow */
@@ -19,24 +19,20 @@
 
 /* Card Styling */
 .card {
-    background-color: #ccd3ce; 
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px; /* Adds space between cards */
+    border-radius: 5px;
+    border: solid 1px rgb(46, 49, 46);
     width: auto; /* Set a fixed width */
-    height: auto;
     display: inline-block; /* Makes the cards appear next to each other */
     margin-right: 10px; /* Space between cards */
 
 }
 
-.card img {
+.image {
     display: flex;
     justify-content: center;
     border: solid 2px black;
-    border-radius: 10px;
+    border-radius: 2px;
     width: 250px;
-    height: 200px;
     margin: auto;
 }
 
@@ -45,7 +41,6 @@
 }
 
 .card-title {
-    font-size: 1.5rem;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -55,10 +50,19 @@
     color: #555;
 }
 
-.stars, .addy {
+.description {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.stars, .addy, .link {
     display: flex;
-    justify-content: center;
-    justify-self:  center;
+    justify-content: center; /* Centers horizontally */
+    align-items: flex-end;   /* Aligns them to the bottom vertically */
+    position: absolute;      /* Positions them relative to the container */
+    bottom: 0;               /* Ensures they are at the bottom */
+    width: 100%;        
+    padding-bottom: 5px;
 }
 
 
@@ -122,3 +126,4 @@
     color: white; /* White color for the checkmark */
     font-size: 14px;
 }
+
