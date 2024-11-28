@@ -77,6 +77,10 @@
     display: none; /* Hide the default checkbox */
 }
 
+.form-label, .form-check-label, .contact {
+    color: rgb(195, 196, 195);
+}
+
 .form-check-input + .form-check-label {
     position: relative;
     padding-left: 30px; /* Space for the custom checkbox */
@@ -110,8 +114,4 @@
     top: 2px;
     color: white; /* White color for the checkmark */
     font-size: 14px;
-}
-
-body{
-    
 }
