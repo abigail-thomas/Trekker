@@ -1,7 +1,7 @@
 
 /* Change the outline color of the input field to green when focused */
 .form-control:focus {
-    border-color: green; /* Change the border color to green */
+    border-color: rgb(3, 78, 3); /* Change the border color to green */
     box-shadow: none; /* Optional: adds a green shadow effect */
 }
 
@@ -14,4 +14,56 @@
         -1px  1px 0 #000, /* Bottom-left shadow */
          1px  1px 0 #000; /* Bottom-right shadow */
     color: white; /* Ensure the text color contrasts with the outline */
+}
+
+
+/* Card Styling */
+.card {
+    background-color: #f8fbf9; /* Light pink background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px; /* Adds space between cards */
+    width: 300px; /* Set a fixed width */
+    height: 300px;
+    display: inline-block; /* Makes the cards appear next to each other */
+    margin-right: 10px; /* Space between cards */
+
+}
+
+.card img {
+    display: flex;
+    justify-content: center;
+    border: solid 2px black;
+    border-radius: 10px;
+    width: 250px;
+    height: 200px;
+    margin: auto;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.btn {
+    background-color: rgb(1, 80, 1);
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: rgba(1, 80, 1, 0.749);
 }
