@@ -1,9 +1,12 @@
 // locationEntered = false;
 let firstSearch = localStorage.getItem('firstSearch') === 'true' ? false : true;
+const key = 'AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc';
 async function __init__() {
     // let location = 'Lakeland+FL';
     let form = document.getElementById('formID');
-    let parks = document.getElementById('parks');
+    // let parks = document.getElementById('parks');
+    let parksContainer1 = document.getElementById('parks-container1');
+
 
     // console.log(location);
     form.addEventListener('submit', async function getLocation(event){
@@ -12,13 +15,13 @@ async function __init__() {
         
         let formInput = document.getElementById('location').value;
         if (!firstSearch){
-            clearPrev(parks);
+            clearPrev(parksContainer1);
         }
         let location = formInput.replaceAll(/, /g, '+');
 
         firstSearch = false;
 
-        await performSearch(location, parks);
+        await performSearch(location, parksContainer1);
 
         // console.log(location);
         // locationEntered = true;
@@ -37,7 +40,7 @@ async function __init__() {
 
 }
 
-function clearPrev(parks) {
+function clearPrev(parksContainer1) {
     // Clear input field
     document.getElementById('location').value = '';
 
@@ -46,19 +49,19 @@ function clearPrev(parks) {
     // console.log(searchResultsContainer);
     // searchResultsContainer.innerHTML = ''; // This clears the container
 
-    parks.innerHTML = '';
+    parksContainer1.innerHTML = '';
 }
 
 
 
-async function performSearch(location, parks) {
+async function performSearch(location, parksContainer1) {
     try {
         // Fetch the coordinates for the given location
         let { lat, lng } = await getCoords(location);
         
         // Perform the second search using these coordinates
         console.log("Searching for parks near:", lat, lng);
-        await getParks(lat, lng, location, parks);
+        await getParks(lat, lng, location, parksContainer1);
     } catch (error) {
         console.error("Error during search:", error);
     }
@@ -93,7 +96,7 @@ async function getCoords(location) {
     }
 }
 
-async function getParks(lat, lng, location, parks) {
+async function getParks(lat, lng, location, parksContainer1) {
 
     console.log(lat, lng);
 
@@ -102,7 +105,7 @@ async function getParks(lat, lng, location, parks) {
         // let response = await fetch(`https://cors-anywhere.herokuapp.com/https://places.googleapis.com/v1/places/ChIJj61dQgK6j4AR4GeTYWZsKWw?fields=id,displayName&key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc`);
         // let response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1000&type=park&key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc`);
         
-        let response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=10000&type=natural_feature&key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc`)}`);
+        let response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=10000&type=natural_feature&key=${key}`)}`);
         // let rawData = await response.text();
         //console.log(rawData);
 
@@ -119,7 +122,7 @@ async function getParks(lat, lng, location, parks) {
         // let testy = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc`);
         // let tester = await testy.json();
         // console.log(tester);
-        await showParks(location, data, parks);
+        await showParks(location, data, parksContainer1);
         
     }
 
@@ -161,30 +164,131 @@ async function getParks(lat, lng, location, parks) {
     }*/
 }
 
-async function showParks(location, data, parks) {
+async function showParks(location, data, parksContainer1) {
+    try {
     let h1 = document.getElementById('header');
     let printLoc = location.replaceAll(/\+/g, ', ');
     h1.textContent = 'Results for ' + printLoc + ': ';
 
     
-    const places = data.results;
-    const nextPageToken = data.next_page_token;
-    places.forEach(place => {
-        let h6 = document.createElement('h6');
-        h6.textContent = place.name;
-        parks.appendChild(h6);
-        console.log(h6);
-        console.log('Name:', place.name);
+    const allPlaces = data.results;
+    let places = [];
+    for (let i = 0; i < data.results.length; i++) {
+        if (data.results[i].photos) {
+            console.log(data.results[i]);
+            places.push(data.results);
+
+
+        }
+
+    }
+    console.log(places.length);
+    let nextPageToken = data.next_page_token;
+    // parksContainer1.innerHTML = '';
+    // places.forEach(place => {
+        
+
+        /*let card = document.createElement('div');
+        card.classList.add('card');
+        card.classList.add('m-2');
+       //  card.style.border = 'solid 20px';
+
+        let cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+
+        let parkName = document.createElement('h5');
+        parkName.textContent = place.name;
+        cardBody.appendChild(parkName);
+
+        parks.appendChild(cardBody);*/
+       // console.log(places.length);
+
+        
+        for (let i = 0; i < places.length; i++) {
+            console.log(places[i]);
+            // for (let j = 0; j < i; j++)
+            // console.log(places[i][j]);
+
+            /*let parkName = document.createElement('h5');
+            parkName.textContent = place.name;
+            cardBody.appendChild(parkName);*/
+            let col = document.createElement('div');
+            col.classList.add('col-2', 'mb-4');
+
+                // Create a new card element
+            let card = document.createElement('div');
+            card.classList.add('card', 'm-2');
+            card.style.width = '18rem';  // Optional: Set width of card
+
+            // Card body
+            let cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            // Park name (Place Name)
+            let parkName = document.createElement('h5');
+            parkName.classList.add('card-title');
+            parkName.textContent = places[i].name;
+            cardBody.appendChild(parkName);
+
+             // Park location (if available)
+            if (places[i].photos) {
+                let parkLocation = document.createElement('p');
+                parkLocation.classList.add('card-text');
+                let locationText = `Location: ${places[i].geometry.location.lat}, ${places[i].geometry.location.lng}`;
+                parkLocation.textContent = locationText;
+                let photo_ref = places[i].photos[0].photo_reference;
+                let response = await fetch (`https://api.allorigins.win/get?url=${encodeURIComponent(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photo_ref}&key=${key}`)}`);
+                // let bypass = await response.json();
+                // console.log(data);
+                // let data = JSON.parse(bypass.contents);
+                // let photo = await get.json();
+                let data = await response.json();
+                console.log(data);
+                let img = document.createElement('img');
+                img.src = data.contents;
+                
+
+                // Append the image to the DOM
+                cardBody.appendChild(img);
+
+
+                // cardBody.appendChild(parkLocation);
+            }
+            else {
+                let img = document.createElement('img');
+                img.src = 'imgs/noImage.png';
+                cardBody.appendChild(img);
+            }
+
+            card.appendChild(cardBody);
+            col.appendChild(card);
+            parksContainer1.appendChild(col);
+
+
+
+           
+            // console.log(cardBody);
+            
+            // parksContainer1.innerHTML = cardBody;
+            // console.log(parksContainer1);
+
+        }
+
+        // console.log('Name:', place.name);
         /*console.log('Location:', place.geometry.location);
         console.log('Icon:', place.icon);
         console.log('Business Status:', place.business_status);
         console.log('ID:', place.place_id);
         console.log('----------------------------------------');*/
-    });
+    // });
     if (nextPageToken) {
-        console.log('Next page available. Use token:', nextPageToken);
+        // console.log('Next page available. Use token:', nextPageToken);
         // You can use the next_page_token to fetch more places (make another API call).
     }
+}
+catch (error) {
+    console.log('Error: ', error);
+}
 
 }
 
