@@ -60,7 +60,7 @@ async function performSearch(location, parksContainer1) {
         let { lat, lng } = await getCoords(location);
         
         // Perform the second search using these coordinates
-        console.log("Searching for parks near:", lat, lng);
+        // console.log("Searching for parks near:", lat, lng);
         await getParks(lat, lng, location, parksContainer1);
     } catch (error) {
         console.error("Error during search:", error);
@@ -70,7 +70,7 @@ async function performSearch(location, parksContainer1) {
 
 
 async function getCoords(location) {
-    console.log("Fetching coordinates for:", location);
+    // console.log("Fetching coordinates for:", location);
     
 
     try {
@@ -98,7 +98,7 @@ async function getCoords(location) {
 
 async function getParks(lat, lng, location, parksContainer1) {
 
-    console.log(lat, lng);
+    // console.log(lat, lng);
 
     try {
         // let response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=10000&key=AIzaSyDp_BWGVtBDdliDAM-_YUe2HOX1lYHlpmo`);
@@ -115,6 +115,7 @@ async function getParks(lat, lng, location, parksContainer1) {
         let bypass = await response.json();
         // console.log(data);
         let data = JSON.parse(bypass.contents);
+        // console.log(data);
 
         
         // console.log(data.displayName.text);
@@ -183,7 +184,7 @@ async function showParks(location, data, parksContainer1) {
         }
 
     }
-    console.log(places.length);
+    // console.log(places.length);
     let nextPageToken = data.next_page_token;
     // parksContainer1.innerHTML = '';
     // places.forEach(place => {
@@ -208,7 +209,7 @@ async function showParks(location, data, parksContainer1) {
 
         for (let i = 0; i < places.length; i++) {
             // for (let j = 0; j < i; j++)
-            console.log(places[i]);
+            // console.log(places[i]);
 
             /*let parkName = document.createElement('h5');
             parkName.textContent = place.name;
@@ -266,37 +267,64 @@ async function showParks(location, data, parksContainer1) {
                 cardBody.appendChild(img);
             }
 
+
+            // get a summary
+            if (places[i].place_id) {
+                let result = await getInfo(places[i].place_id);
+                // console.log(result);
+                // let details = document.createElement('p');
+                // details.classList.add('details');
+                // details.textContent = 'Address: ' + result.formatted_address;
+                let maps = document.createElement('a');
+                maps.classList.add('addy');
+                maps.href = result.url;
+                maps.textContent = 'Address: ' + result.formatted_address;
+
+                console.log(maps);
+
+                //<p><a href="chess.com">chess</a></p>
+
+                // details.innerHTML = maps;
+
+                cardBody.appendChild(maps);
+                // console.log(details);
+
+            }
+
             // if rating availible
             let ratings = document.createElement('p');
             ratings.classList.add('stars');
 
             // ★
             let numStars = places[i].rating;
-            console.log(numStars);
+            // console.log(numStars);
             numStars = Math.floor(numStars);
-            console.log(numStars);
+            // console.log(numStars);
             
             if (places[i].rating){
-                if (numStars <= 1){
+                if (numStars === 1){
                     ratings.textContent = 'Rating: ★';
                 }
-                else if (numStars <= 2) {
+                else if (numStars === 2) {
                     ratings.textContent ='Rating: ★★';
                 }
-                else if (numStars <= 3) {
+                else if (numStars === 3) {
                     ratings.textContent ='Rating: ★★★';
                 }
-                else if (numStars <= 4) {
+                else if (numStars === 4) {
                     ratings.textContent ='Rating: ★★★★';
                 }
                 else {
                     ratings.textContent ='Rating: ★★★★★';
                 }
-                cardBody.appendChild(ratings);
             }
             else {
+                // console.log("here");
+
                 ratings.textContent = 'No rating available';
             }
+            cardBody.appendChild(ratings);
+
             // let card = document.querySelector('#card');
             // let col = document.getElementsByClassName('.col');
             // console.log(col);
@@ -332,6 +360,25 @@ catch (error) {
     console.log('Error: ', error);
 }
 
+}
+
+async function getInfo(place_id) {
+    try {
+        // get the formatted address
+        // url to googl emaps
+
+        let response = await fetch (`https://api.allorigins.win/get?url=${encodeURIComponent(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${place_id}&fields=name,formatted_address,url&types,photos,editorial_summary,&key=${key}`)}`);
+        let bypass = await response.json();
+        // console.log(data);
+        let data = JSON.parse(bypass.contents);
+        // console.log(data);
+        return data.result;
+        
+
+    }
+    catch (error) {
+        console.log('Error: ', error);
+    }
 }
 
 
