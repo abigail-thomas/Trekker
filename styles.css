@@ -19,11 +19,11 @@
 
 /* Card Styling */
 .card {
-    background-color: #f8fbf9; /* Light pink background */
+    background-color: #ccd3ce; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px; /* Adds space between cards */
-    width: 300px; /* Set a fixed width */
+    width: auto; /* Set a fixed width */
     height: auto;
     display: inline-block; /* Makes the cards appear next to each other */
     margin-right: 10px; /* Space between cards */
@@ -84,7 +84,7 @@
     display: none; /* Hide the default checkbox */
 }
 
-.form-label, .form-check-label, .contact {
+.form-label, .form-check-label {
     color: rgb(195, 196, 195);
 }
 
