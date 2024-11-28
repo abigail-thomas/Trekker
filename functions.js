@@ -171,16 +171,44 @@ async function showParks(location, data, parksContainer1) {
     h1.textContent = 'Results for ' + printLoc + ': ';
 
     
-    const allPlaces = data.results;
+    // const allPlaces = data.results;
     let places = [];
     for (let i = 0; i < data.results.length; i++) {
-        if (data.results[i].photos) {
+        // console.log();
+        if (data.results[i].photos && data.results[i].name) {
             console.log(data.results[i]);
-            places.push(data.results);
+            places.push(data.results[i]);
 
 
+        }
+
+    }
+    console.log(places.length);
+    let nextPageToken = data.next_page_token;
+    // parksContainer1.innerHTML = '';
+    // places.forEach(place => {
+        
+
+        /*let card = document.createElement('div');
+        card.classList.add('card');
+        card.classList.add('m-2');
+       //  card.style.border = 'solid 20px';
+
+        let cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+
+        let parkName = document.createElement('h5');
+        parkName.textContent = place.name;
+        cardBody.appendChild(parkName);
+
+        parks.appendChild(cardBody);*/
+       // console.log(places.length);
+
+    // console.log(places);
+
+        for (let i = 0; i < places.length; i++) {
             // for (let j = 0; j < i; j++)
-            // console.log(places[i][j]);
+            console.log(places[i]);
 
             /*let parkName = document.createElement('h5');
             parkName.textContent = place.name;
@@ -243,36 +271,6 @@ async function showParks(location, data, parksContainer1) {
 
 
 
-
-
-        }
-
-    }
-    console.log(places.length);
-    let nextPageToken = data.next_page_token;
-    // parksContainer1.innerHTML = '';
-    // places.forEach(place => {
-        
-
-        /*let card = document.createElement('div');
-        card.classList.add('card');
-        card.classList.add('m-2');
-       //  card.style.border = 'solid 20px';
-
-        let cardBody = document.createElement('div');
-        cardBody.classList.add('card-body');
-
-        let parkName = document.createElement('h5');
-        parkName.textContent = place.name;
-        cardBody.appendChild(parkName);
-
-        parks.appendChild(cardBody);*/
-       // console.log(places.length);
-
-    console.log(places);
-
-        for (let i = 0; i < places.length; i++) {
-            
            
             // console.log(cardBody);
             
@@ -298,6 +296,8 @@ catch (error) {
 }
 
 }
+
+
 
 
 __init__();
