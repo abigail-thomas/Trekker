@@ -6,7 +6,7 @@ async function __init__() {
 
 async function getNews() {
     try {
-    let response = await fetch(`https://developer.nps.gov/api/v1/articles?limit=10&q=national%20parks&api_key=${key}`); 
+    let response = await fetch(`https://developer.nps.gov/api/v1/articles?limit=9&q=national%20parks&api_key=${key}`); 
     let data = await response.json();
     let news = data.data;
     console.log(news);
@@ -20,7 +20,7 @@ async function getNews() {
             
             
             // if image with artcle
-            if (news[i].listingImage.length != 0 && news[i].listingImage.url) {
+            if (news[i].listingImage.length != 0 && news[i].listingImage.url && news[i].listingDescription.length < 375) {
                 // console.log('here');
                 
 
@@ -29,7 +29,7 @@ async function getNews() {
 
                     // Create a new card element
                 let card = document.createElement('div');
-                card.classList.add('card', 'm-2');
+                card.classList.add('card');
                 card.style.width = '100%';  // Optional: Set width of card
 
                 // Card body
@@ -38,18 +38,31 @@ async function getNews() {
 
                 let title = document.createElement('h2');
                 title.textContent = news[i].title;
+                title.classList.add('outlined');
+
+                let detail = document.createElement('p');
+                detail.classList.add('description');
+                detail.textContent = news[i].listingDescription;
 
 
                 let img = document.createElement('img');
                 img.src = news[i].listingImage.url;
+                img.classList.add('image');
                 
                 cardBody.appendChild(title);
-                cardBody.appendChild(img);
+                // cardBody.appendChild(img);
+                console.log(img.src);
+                cardBody.style.backgroundImage = `url(${img.src})`;
+                console.log(cardBody);
+                cardBody.style.backgroundSize = 'cover';
+                cardBody.style.height = '400px';
+
+                cardBody.appendChild(detail);
 
 
 
                 let link = document.createElement('a');
-                link.classList.add('addy', 'pt-2');
+                link.classList.add('link', 'pt-2');
                 // link.classList.add('addy');
                 link.href = news[i].url;
                 link.textContent = 'Read this article';
@@ -61,10 +74,13 @@ async function getNews() {
 
                 cardBody.appendChild(link);
                 card.appendChild(cardBody);
+                // card.appendChild(link);
                 col.appendChild(card);
+                // col.appendChild(link);
                 
                 // console.log(col);
                 newsContainer1.appendChild(col);
+                // newsContainer11.appendChild(link);
                 // console.log(newsContainer1);
 
                 // console.log('here');
