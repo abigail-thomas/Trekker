@@ -88,9 +88,21 @@
     display: none; /* Hide the default checkbox */
 }
 
-.form-label, .form-check-label {
+.form-label, .form-check-label, footer, footer a{
     color: rgb(195, 196, 195);
 }
+footer a:hover {
+    color: rgba(1, 80, 1, 0.749);
+}
+.addy:hover, .link:hover {
+    text-shadow:
+        -1px -1px 0 #fcfbfb, /* Top-left shadow */
+         1px -1px 0 #fdfbfb, /* Top-right shadow */
+        -1px  1px 0 #f4eded, /* Bottom-left shadow */
+         1px  1px 0 #f7f5f5; /* Bottom-right shadow */
+    color: rgba(1, 49, 1, 0.749);
+}
+
 
 .form-check-input + .form-check-label {
     position: relative;
