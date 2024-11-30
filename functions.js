@@ -104,14 +104,18 @@ async function getParks(lat, lng, location, parksContainer1) {
 
     try {
         // console.log(lat, lng);
-        let locationFormatted = location.replaceAll(/, /g, '%2C%20');
+        let locationFormatted = location.replaceAll(/,/g, '%2C');
+       //  console.log(locationFormatted);
+
+        locationFormatted = locationFormatted.replaceAll(/ /g, '%20');
+        // console.log(locationFormatted);
 
 
 // Fetch parks within the bounding box
-let r = await fetch(`https://developer.nps.gov/api/v1/parks?q=${locationFormatted}&api_key=${key2}`);
-let d = await r.json();
-console.log(d.data);
-        // let response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=10000&key=AIzaSyDp_BWGVtBDdliDAM-_YUe2HOX1lYHlpmo`);
+        let r = await fetch(`https://developer.nps.gov/api/v1/parks?q=${locationFormatted}&api_key=${key2}`);
+        let d = await r.json();
+        console.log(d.data);
+                // let response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=10000&key=AIzaSyDp_BWGVtBDdliDAM-_YUe2HOX1lYHlpmo`);
         // let response = await fetch(`https://cors-anywhere.herokuapp.com/https://places.googleapis.com/v1/places/ChIJj61dQgK6j4AR4GeTYWZsKWw?fields=id,displayName&key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc`);
         // let response = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1000&type=park&key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc`);
         
@@ -133,7 +137,7 @@ console.log(d.data);
         // let testy = await fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc`);
         // let tester = await testy.json();
         // console.log(tester);
-        await showParks(lat, lng, location, d.data, parksContainer1);
+        await showParks(location, d.data, parksContainer1);
         
     }
 
@@ -176,7 +180,7 @@ console.log(d.data);
 }
 
 
-async function showParks(lat, lng, location, data, parksContainer1) {
+async function showParks(location, data, parksContainer1) {
     try {
     let h1 = document.getElementById('header');
     let printLoc = location.replaceAll(/\+/g, ', ');
@@ -237,10 +241,12 @@ async function showParks(lat, lng, location, data, parksContainer1) {
             let cardBody = document.createElement('div');
             cardBody.classList.add('card-body');
 
+
             // Park name (Place Name)
             let parkName = document.createElement('h2');
-            parkName.classList.add('card-title');
+            parkName.classList.add('card-title', 'hover-target');
             parkName.textContent = data[i].fullName;
+
             cardBody.appendChild(parkName);
 
             
@@ -264,7 +270,7 @@ async function showParks(lat, lng, location, data, parksContainer1) {
                 // console.log(data);
                 let img = document.createElement('img');
                 img.classList.add('image');
-                img.src = data[i].images[0].url;
+                img.src = data[i].images[1].url;
                 
 
                 // console.log(img.src);
@@ -290,26 +296,55 @@ async function showParks(lat, lng, location, data, parksContainer1) {
 
             // get a summary
             // if (data[i].description) {
-                let result = await getInfo(data[i].description);
-                // console.log(result);
-                // let details = document.createElement('p');
-                // details.classList.add('details');
+      
+
+               //  let body = document.querySelector('body');
+                // body.appendChild(hover);
+
+
+                // hover.innerHTML = details;
+
+
                 // details.textContent = 'Address: ' + result.formatted_address;
                 let maps = document.createElement('a');
                 maps.classList.add('addy', 'pt-3');
                 maps.href = data[i].directionsUrl;
                 maps.textContent = 'Address: ' + data[i].addresses[0].city + ', ' + data[i].addresses[0].stateCode + ', ' + data[i].addresses[0].postalCode + ', ' + data[i].addresses[0].countryCode;
 
-                // console.log(maps);
+                // console.log(details);
 
                 //<p><a href="chess.com">chess</a></p>
 
                 // details.innerHTML = maps;
+                
 
                 cardBody.appendChild(maps);
                 // console.log(details);
 
             // }
+
+            
+            let det = data[i].description;
+            // console.log(result);
+            details = document.createElement('p');
+            details.classList.add('det');
+            details.textContent = det;
+
+           
+
+
+            
+
+            let hover = document.createElement('div');
+            let popUp = document.createElement('div');
+            hover.classList.add('hover-container');
+            // hover.textContent = 'See Park Description';
+            popUp.classList.add('hover-box');
+            hover.appendChild(popUp);
+            popUp.appendChild(details);
+            popUp.textContent = det;
+
+            cardBody.appendChild(hover);
 
             // if rating availible
             let ratings = document.createElement('p');
@@ -355,7 +390,16 @@ async function showParks(lat, lng, location, data, parksContainer1) {
             parksContainer1.appendChild(col);
 
 
+   // Add hover effect to the park name (hover-target)
+   parkName.addEventListener('mouseenter', function() {
+    popUp.style.opacity = '1'; // Show the hover box when hovering over the park name
+    popUp.style.visibility = 'visible';
+});
 
+parkName.addEventListener('mouseleave', function() {
+    popUp.style.opacity = '0'; // Hide the hover box when mouse leaves the park name
+    popUp.style.visibility = 'hidden';
+});
            
             // console.log(cardBody);
             
