@@ -1,4 +1,5 @@
 const key = 'tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD';
+let firstSearch = localStorage.getItem('firstSearch') === 'true' ? false : true;
 
 async function __init__() {
 
@@ -8,8 +9,10 @@ async function __init__() {
 }
 
 async function getQ() {
-    
+
     let form = document.getElementById('formID');
+    let newsContainer1 = document.getElementById('news-container1');
+
 
 
     form.addEventListener('submit', async function getQ(event){
@@ -17,25 +20,43 @@ async function getQ() {
 
         
         let q = document.getElementById('q').value;
+        if (!firstSearch){
+            clearPrev(newsContainer1);
+        }
 
-        await getNews(q);
+        firstSearch = false;
+
+
+        await getNews(q, newsContainer1);
     }
     );
 
 
 }
 
-async function getNews(q) {
+function clearPrev(newsContainer1) {
+    // Clear input field
+    document.getElementById('q').value = '';
+
+    // Clear previous results from the search results container
+    // const searchResultsContainer = document.getElementById('searchResults').value;
+    // console.log(searchResultsContainer);
+    // searchResultsContainer.innerHTML = ''; // This clears the container
+
+    newsContainer1.innerHTML = '';
+}
+
+
+async function getNews(q, newsContainer1) {
     try {
         q = q.replaceAll(/ /g, '%20');
         // curl -X GET "https://developer.nps.gov/api/v1/newsreleases?limit=9&q=hiking&api_key=tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD" -H "accept: application/json"
-    let response = await fetch(`https://developer.nps.gov/api/v1/newsreleases?limit=9&q=${q}&api_key=${key}`); 
+    let response = await fetch(`https://developer.nps.gov/api/v1/newsreleases?limit=8&q=${q}&api_key=${key}`); 
     let data = await response.json();
     let news = data.data;
-    // console.log(news);
+    console.log(news);
     // console.log(news[0].listingImage.url);
 
-    let newsContainer1 = document.getElementById('news-container1');
     
         for (let i = 0; i < news.length; i++) {
             // console.log(i);
