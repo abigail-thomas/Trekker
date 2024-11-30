@@ -127,7 +127,7 @@ async function getParks(lat, lng, location, parksContainer1) {
         
         // let data = await getID.json();
         // let bypass = await response.json();
-        // console.log(data);
+        console.log(d.data);
         // let data = JSON.parse(bypass.contents);
        //  console.log(data);
 
