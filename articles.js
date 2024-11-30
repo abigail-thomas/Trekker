@@ -1,10 +1,15 @@
 const key = 'tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD';
 
 async function __init__() {
+   
+
     await getNews();
 }
 
 async function getNews() {
+
+
+
     try {
     let response = await fetch(`https://developer.nps.gov/api/v1/articles?limit=9&q=national%20parks&api_key=${key}`); 
     let data = await response.json();
