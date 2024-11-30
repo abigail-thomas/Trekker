@@ -55,7 +55,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.stars, .addy, .link {
+.stars, .addy, .link, .hover-container {
     display: flex;
     justify-content: center; /* Centers horizontally */
     align-items: flex-end;   /* Aligns them to the bottom vertically */
@@ -139,3 +139,43 @@ footer a:hover {
     font-size: 14px;
 }
 
+/* Style the container */
+.hover-container {
+    position: relative; /* Ensures the box is positioned relative to this container */
+}
+
+/* Style the target element */
+.hover-target {
+    cursor: pointer; /* Indicate that the element is interactive */
+}
+
+/* Style the box (hidden by default) */
+.hover-box {
+    position: absolute;
+    left: 50%; /* Center horizontally */
+    bottom: 0;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent black background */
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    opacity: 0; /* Start hidden */
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth appearance */
+    max-width: 200px; /* Set a max-width to avoid too wide of a box */
+    word-wrap: break-word; /* Break words if they are too long */
+    word-break: break-word; /* Handle long words to prevent overflow */
+}
+.det {
+    margin: 0; /* Remove default margins */
+    white-space: normal; /* Allow text inside paragraphs to wrap */
+    word-wrap: break-word; /* Break long words */
+    word-break: break-word; /* Prevent overflow for long words */
+}
+
+/* Show the box on hover */
+.hover-container:hover .hover-box {
+    opacity: 1;
+    visibility: visible;
+}
