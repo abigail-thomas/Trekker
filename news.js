@@ -1,7 +1,11 @@
 const key = 'tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD';
-let firstSearch = localStorage.getItem('firstSearch') === 'true' ? false : true;
+// let firstSearch = localStorage.getItem('firstSearch') === 'true' ? false : true;
+firstSearch = true;
+let q = 'National Parks';
+let newsContainer1 = document.getElementById('news-container1');
 
 async function __init__() {
+    await getNews(q, newsContainer1);
 
     
     // await getNews();
@@ -19,12 +23,12 @@ async function getQ() {
         event.preventDefault();
 
         
-        let q = document.getElementById('q').value;
-        if (!firstSearch){
+        q = document.getElementById('q').value;
+        // if (!firstSearch){
             clearPrev(newsContainer1);
-        }
+       //  }
 
-        firstSearch = false;
+        // firstSearch = false;
 
 
         await getNews(q, newsContainer1);
