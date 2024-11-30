@@ -16,7 +16,7 @@
     color: white; /* Ensure the text color contrasts with the outline */
 }
 
-#newsSearch, #q, .btn{
+#newsSearch, #q, .btn, #location{
     max-height: 50px;
     max-width: 200px;
     margin-bottom: 40px;
