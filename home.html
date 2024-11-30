@@ -1,0 +1,211 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="imgs/signpost-split.svg">
+    
+    <title>Trekker</title>
+    <!-- my api key : ZdjnF2yJw2ekpgSkbIi1GOGC3cK2LFxASSHxdWXB for NASA-->
+    <!-- google geocoding api: AIzaSyCandeVGmVHVrQS03jzYu5y2h0UpA95KoQ  places api: AIzaSyDp_BWGVtBDdliDAM-_YUe2HOX1lYHlpmo   AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc-->
+    <!-- geocode maps api: 674602f427fbe194124983rcya9edbe-->
+     <!-- national park service api : tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD
+-->
+
+</head>
+<body style="font-family: Bebas Neue; background-color: rgb(232, 232, 232);">
+
+    <!-- navbar -->
+    <nav class="navbar bg-dark fixed-top navbar-expand-md navbar-dark p-0">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <span><i class="bi bi-signpost-split"></i></span>
+            </a>
+            <!-- toggle button for mobile nav -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- navbar links -->
+            <div class="collapse navbar-collapse justify-content-start" id="main-nav">
+                <ul class="navbar-nav"  style="font-size: larger;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">NEWS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    
+        <div class="container-fluid p-0" style="width: 100%;">
+
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" style="width: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="imgs/blue_mountains.jpg" class="d-block w-100" alt="blue mountains">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah1.jpg" class="d-block w-100" alt="utah 1">
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <img src="imgs/camp1.jpg" class="d-block w-100" alt="camp 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah4.JPG" class="d-block w-100" alt="utah 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/camp2.jpg" class="d-block w-100" alt="camp 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/camp3.jpg" class="d-block w-100" alt="camp 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah6.jpg" class="d-block w-100" alt="utah 6">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/camp4.jpg" class="d-block w-100" alt="camp 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah5.JPG" class="d-block w-100" alt="utah 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/camp5.jpg" class="d-block w-100" alt="camp 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/fog.JPG" class="d-block w-100" alt="fog">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah7.JPG" class="d-block w-100" alt="utah 7">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/forest.jpg" class="d-block w-100" alt="forest">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah2.JPG" class="d-block w-100" alt="utah 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/just_rocks.jpg" class="d-block w-100" alt="just rocks">
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <img src="imgs/utah8.JPG" class="d-block w-100" alt="utah 8">
+                    </div>
+                    
+                    
+                    <div class="carousel-item">
+                        <img src="imgs/rocky.jpg" class="d-block w-100" alt="rocky">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah9.JPG" class="d-block w-100" alt="utah 9">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/stairs.jpg" class="d-block w-100" alt="stairs">
+                    </div>
+                    
+                    
+                    <div class="carousel-item">
+                        <img src="imgs/utah3.jpg" class="d-block w-100" alt="utah3">
+                    </div>
+                    
+                    
+                    <div class="carousel-item">
+                        <img src="imgs/waterfall.jpg" class="d-block w-100" alt="waterfall">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imgs/utah10.jpg" class="d-block w-100" alt="utah 10">
+                    </div>
+                    
+                </div>
+                <div class="carousel-caption position-absolute top-50 start-50 translate-middle text-white">
+                    <h1 style="font-size: 5rem;">Trekker</h1>
+                    <p>Exploration Starts Here – Find Your Adventure</p>
+                    <form class="d-flex" role="search" id="formID">
+                        <button class="btn btn-success mx-auto" type="submit" id="home-btn" onclick="window.open('index.html', '_blank')">Search Now</button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+    <div class="container-fluid m-5" style="max-width: fit-content;">
+        <h1 class="header text-center display-2 fw-100 py-5"  style="font-family: Bebas Neue;">ARTICLES</h1>
+
+        <div class="row g-3 align-items-evenly justify-content-left" id="news-container1">
+                
+        </div>
+
+    </div>
+
+
+
+        <footer class="bg-dark py-4">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                <h5>About Us</h5>
+                    <p>Discover the great outdoors with us! Our website is your ultimate guide to finding trails, hikes, mountain paths, lakes, and outdoor adventures near you. <br> Stay inspired with our latest articles, news updates, and breathtaking <br>photo galleries featuring national parks and scenic escapes. <br>Whether you’re a seasoned explorer or just starting your journey, we’re here to help you connect with nature and plan your next adventure.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="home.html" class="text-decoration-none">Home</a></li>
+                    <li><a href="news.html" class="text-decoration-none">News</a></li>
+                    <li><a href="contact.html" class="text-decoration-none">Contact</a></li>
+                </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                <h5>Follow Us</h5>
+                <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="me-3"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="me-3"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>&copy; 2024 Trekker. All Rights Reserved.</p>
+            </div>
+            </div>
+        </footer>
+        
+
+        
+    
+
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc=places"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="articles.js"></script>
+    
+</body>
+</html>
+
+<!-- 
+*** Required Components ***
+- three functional pages ADD MORE STUFF TO THIS
+- nav bar
+- images
+- CSS styling
+- javascript
+
+ 
+-->
