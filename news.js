@@ -1,18 +1,33 @@
 const key = 'tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD';
 
 async function __init__() {
+
+    
     // await getNews();
     await getQ();
 }
 
 async function getQ() {
+    
+    let form = document.getElementById('formID');
 
-    await getNews();
+
+    form.addEventListener('submit', async function getQ(event){
+        event.preventDefault();
+
+        
+        let q = document.getElementById('q').value;
+
+        await getNews(q);
+    }
+    );
+
+
 }
 
-async function getNews() {
+async function getNews(q) {
     try {
-        let q = 'national%20parks';
+        q = q.replaceAll(/ /g, '%20');
         // curl -X GET "https://developer.nps.gov/api/v1/newsreleases?limit=9&q=hiking&api_key=tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD" -H "accept: application/json"
     let response = await fetch(`https://developer.nps.gov/api/v1/newsreleases?limit=9&q=${q}&api_key=${key}`); 
     let data = await response.json();
