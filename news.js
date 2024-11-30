@@ -1,15 +1,23 @@
 const key = 'tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD';
 
 async function __init__() {
+    // await getNews();
+    await getQ();
+}
+
+async function getQ() {
+
     await getNews();
 }
 
 async function getNews() {
     try {
-    let response = await fetch(`https://developer.nps.gov/api/v1/articles?limit=9&q=national%20parks&api_key=${key}`); 
+        let q = 'national%20parks';
+        // curl -X GET "https://developer.nps.gov/api/v1/newsreleases?limit=9&q=hiking&api_key=tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD" -H "accept: application/json"
+    let response = await fetch(`https://developer.nps.gov/api/v1/newsreleases?limit=9&q=${q}&api_key=${key}`); 
     let data = await response.json();
     let news = data.data;
-    console.log(news);
+    // console.log(news);
     // console.log(news[0].listingImage.url);
 
     let newsContainer1 = document.getElementById('news-container1');
@@ -20,7 +28,7 @@ async function getNews() {
             
             
             // if image with artcle
-            if (news[i].listingImage.length != 0 && news[i].listingImage.url && news[i].listingDescription.length < 375) {
+            if (news[i].image.url != 0 ) {
                 // console.log('here');
                 
 
@@ -39,21 +47,22 @@ async function getNews() {
                 let title = document.createElement('h2');
                 title.textContent = news[i].title;
                 title.classList.add('outlined');
+                title.style.textAlign = 'center';
 
                 let detail = document.createElement('p');
                 detail.classList.add('description');
-                detail.textContent = news[i].listingDescription;
+                // detail.textContent = news[i].abstract;
 
 
                 let img = document.createElement('img');
-                img.src = news[i].listingImage.url;
+                img.src = news[i].image.url;
                 img.classList.add('image');
                 
                 cardBody.appendChild(title);
                 // cardBody.appendChild(img);
-                console.log(img.src);
+                // console.log(img.src);
                 cardBody.style.backgroundImage = `url(${img.src})`;
-                console.log(cardBody);
+                // console.log(cardBody);
                 cardBody.style.backgroundSize = 'cover';
                 cardBody.style.height = '400px';
 
@@ -65,7 +74,8 @@ async function getNews() {
                 link.classList.add('link', 'pt-2');
                 // link.classList.add('addy');
                 link.href = news[i].url;
-                link.textContent = 'Read this article';
+                link.textContent = 'Read news';
+                // link.style.textAlign = 'center';
                 // console.log(maps);
 
                 //<p><a href="chess.com">chess</a></p>
@@ -86,11 +96,8 @@ async function getNews() {
                 // console.log('here');
                 // console.log(newsContainer1);
 
+            
             }
-            else {
-                console.log('no image');
-            }
-
         
         
         }
