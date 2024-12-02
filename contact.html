@@ -22,10 +22,10 @@
 
     <title>Trekker</title>
 </head>
-<body style="font-family: Bebas Neue; background-color: rgba(1, 80, 1, 0.5);">
+<body style="font-family: Bebas Neue; background-image: url('imgs/blue_mountains.jpg'); background-size: cover;">
 
-    <!-- navbar -->
-    <nav class="navbar bg-dark fixed-top navbar-expand-md navbar-dark p-0">
+      <!-- navbar -->
+      <nav class="navbar bg-dark fixed-top navbar-expand-md navbar-dark p-0">
         <div class="container-fluid">
             <a class="navbar-brand">
                 <span><i class="bi bi-signpost-split"></i></span>
@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse justify-content-start" id="main-nav">
                 <ul class="navbar-nav"  style="font-size: larger;">
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html">HOME</a>
+                        <a class="nav-link" href="index.html">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="news.html">NEWS</a>
@@ -52,52 +52,69 @@
         </div>
     </nav>
 
-    <h1 class="header text-center display-2 fw-100 pt-5 m-5"  style="font-family: Bebas Neue;">NEWS</h1>
-        <form class="d-flex justify-content-center" role="search" id="formID">
-            <input id="q" class="form-control me-2" type="search" placeholder="Search news" aria-label="Search">
-            <button class="btn btn-success" type="submit"><i class="bi bi-search"></i></button>
+
+
+    <!-- contact form -->
+    <div class="container-xl pt-5">
+        <h1 class="header text-center display-2 fw-100 pt-5">Contact Us</h1>
+        <form class="p-3 mt-5"  style="border-radius: 10px; ">
+            <!-- name -->
+            <fieldset class="mb-4">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </fieldset>
+            <!-- email -->
+            <fieldset class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </fieldset>
+            <!-- message -->
+            <fieldset class="mb-2">
+                <label for="messsage" class="form-label">Message</label>
+                <textarea type="message" class="form-control" id="message" rows="3"></textarea>
+            </fieldset>
+            <!-- checkbox -->
+            <div class="form-check mb-4">
+                <input type="checkbox" class="form-check-input" id="check">
+                <label for="check" class="form-check-label">Subscribe to Newsletter !</label>
+            </div>
+            <!-- submit button -->
+            <button type="submit" class="btn btn-secondary">Submit</button>
         </form>
-    
-
-    <div class="container-fluid m-5 " style="max-width: fit-content;">
-        
-
-        <div class="row g-3 align-items-evenly justify-content-left" id="news-container1">
-                
-        </div>
-
     </div>
 
     <footer class="bg-dark py-4">
         <div class="container">
-        <div class="row">
+          <div class="row">
             <div class="col-md-4 mb-3">
-            <h5>About Us</h5>
+              <h5>About Us</h5>
                 <p>Discover the great outdoors with us! Our website is your ultimate guide to finding trails, hikes, mountain paths, lakes, and outdoor adventures near you. <br> Stay inspired with our latest articles, news updates, and breathtaking <br>photo galleries featuring national parks and scenic escapes. <br>Whether you’re a seasoned explorer or just starting your journey, we’re here to help you connect with nature and plan your next adventure.</p>
             </div>
             <div class="col-md-4 mb-3">
-            <h5>Quick Links</h5>
-            <ul class="list-unstyled">
-                <li><a href="home.html" class="text-decoration-none">Home</a></li>
+              <h5>Quick Links</h5>
+              <ul class="list-unstyled">
+                <li><a href="index.html" class="text-decoration-none">Home</a></li>
                 <li><a href="news.html" class="text-decoration-none">News</a></li>
                 <li><a href="contact.html" class="text-decoration-none">Contact</a></li>
             </ul>
             </div>
             <div class="col-md-4 mb-3">
-            <h5>Follow Us</h5>
-            <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="me-3"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="me-3"><i class="bi bi-linkedin"></i></a>
+              <h5>Follow Us</h5>
+              <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="me-3"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="me-3"><i class="bi bi-linkedin"></i></a>
             </div>
-        </div>
-        <div class="text-center mt-4">
+          </div>
+          <div class="text-center mt-4">
             <p>&copy; 2024 Trekker. All Rights Reserved.</p>
+          </div>
         </div>
-        </div>
-    </footer>
+      </footer>
     
 
-    <script type="text/javascript" src="news.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
+</html>
