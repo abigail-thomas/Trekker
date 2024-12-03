@@ -16,7 +16,7 @@ async function getNews() {
         for (let i = 0; i < news.length; i++) {
                          
                 let col = document.createElement('div');
-                col.classList.add('col-4', 'mb-4');
+                col.classList.add('col-lg-4', 'col-m-2', 'mb-4');
 
                 let card = document.createElement('div');
                 card.classList.add('card');

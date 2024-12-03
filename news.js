@@ -48,7 +48,7 @@ async function getNews(q, newsContainer1) {
             if (news[i].image.url != 0 ) {                
 
                 let col = document.createElement('div');
-                col.classList.add('col-4', 'mb-4');
+                col.classList.add('col-lg-4', 'col-m-2', 'mb-4');
                 let card = document.createElement('div');
                 card.classList.add('card');
                 card.style.width = '100%'; 

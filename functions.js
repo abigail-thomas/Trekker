@@ -35,41 +35,46 @@ function clearPrev(parksContainer1) {
 async function performSearch(location, parksContainer1) {
     try {
         // Fetch the coordinates for the given location
-        let { lat, lng } = await getCoords(location);
+        // let place = await getCoords(location);
         
         // Perform the second search using these coordinates
-        await getParks(lat, lng, location, parksContainer1);
+        await getParks(location, parksContainer1);
     } catch (error) {
         console.error("Error during search:", error);
     }
 }
 
 
-
+/*
 async function getCoords(location) {
 
     try {
         let response = await fetch(`https://geocode.maps.co/search?q=${location}&api_key=674602f427fbe194124983rcya9edbe`);
         data = await response.json();
+
+        // console.log(location);
         
         return {
           
-            lat: data[0].lat,
-            lng: data[0].lon,
+            // lat: data[0].lat,
+            // lng: data[0].lon,
             location: location
         };
     }
     catch (error) {
         console.log("Error: ", error);
     }
-}
+}*/
 
 async function getParks(location, parksContainer1) {
 
     try {
+        console.log(location);
         let locationFormatted = location.replaceAll(/,/g, '%2C');
-
         locationFormatted = locationFormatted.replaceAll(/ /g, '%20');
+
+
+        console.log(locationFormatted);
         let r = await fetch(`https://developer.nps.gov/api/v1/parks?q=${locationFormatted}&api_key=${key2}`);
         let d = await r.json();
         console.log(d.data);
@@ -91,6 +96,7 @@ async function showParks(location, data, parksContainer1) {
 
     
         for (let i = 0; i < data.length; i++) {
+            console.log(data[i].fullName)
             
             let col = document.createElement('div');
             col.classList.add('col-4', 'mb-4');
