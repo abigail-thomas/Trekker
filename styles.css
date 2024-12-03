@@ -6,7 +6,6 @@
 }
 
 .carousel-caption, .outlined, .link, .card-title, .addy, .stars, .description {
-    padding: 10px;
     border-radius: 10px;
     text-shadow:
         -1px -1px 0 #000, /* Top-left shadow */
@@ -17,13 +16,11 @@
 }
 
 @media screen and (max-width: 600px) {
-    .carousel-caption p {
+    .carousel-caption p, .description {
         display: none;
-        text-align: center;
     }
-    .carousel-caption .btn {
-        display: flex;
-
+    .outlined, .link {
+        text-align: center;
     }
 }
 
