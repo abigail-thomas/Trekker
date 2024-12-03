@@ -15,7 +15,7 @@
     color: white; /* Ensure the text color contrasts with the outline */
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .carousel-caption p, .description {
         display: none;
     }
