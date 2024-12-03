@@ -50,7 +50,7 @@ async function getNews() {
 
 
                 let link = document.createElement('a');
-                link.classList.add('link', 'pt-2');
+                link.classList.add('link', 'pt-2' , 'px-0');
                 link.href = news[i].url;
                 link.textContent = 'Read this article';
                
