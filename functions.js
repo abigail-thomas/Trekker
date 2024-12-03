@@ -1,5 +1,5 @@
 let firstSearch = localStorage.getItem('firstSearch') === 'true' ? false : true;
-const key = 'AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc';
+// const key = 'AIzaSyCmLL1N_bBudEjGSeDdYlqo0olQJ7r0ykc';
 const key2 = 'tSvNEYpBqMruetD9GyNW8WMsYNJKanhO5bbhW4hD';
 async function __init__() {
     let form = document.getElementById('formID');

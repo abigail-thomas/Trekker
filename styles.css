@@ -16,6 +16,18 @@
     color: white; /* Ensure the text color contrasts with the outline */
 }
 
+@media screen and (max-width: 600px) {
+    .carousel-caption p {
+        display: none;
+        text-align: center;
+    }
+    .carousel-caption .btn {
+        display: flex;
+
+    }
+}
+
+
 #newsSearch, #q, .btn, #location{
     max-height: 50px;
     max-width: 200px;
