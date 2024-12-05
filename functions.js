@@ -209,6 +209,7 @@ async function showParks(location, data, parksContainer1) {
 
 }
 
+/*
 async function getInfo(place_id) {
     try {
         // get the formatted address
@@ -226,7 +227,7 @@ async function getInfo(place_id) {
     catch (error) {
         console.log('Error: ', error);
     }
-}
+}*/
 
 
 __init__();
