@@ -109,8 +109,9 @@ async function showParks(location, data, parksContainer1) {
             parkName.textContent = data[i].fullName;
 
             cardBody.appendChild(parkName);
+            console.log(data[i].images);
 
-            if (data[i].images) {
+            if (data[i].images && data[i].images[1].url) {
                 let parkLocation = document.createElement('p');
                 parkLocation.classList.add('card-text');
                 
